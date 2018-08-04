@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Bb]uild/
-/[Ll]ogs/
-/[Bb]in/
-/[Oo]bj/
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Ll]ogs/
+[Bb]in/
+[Oo]bj/
 packages
 
 *.log
