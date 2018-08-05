@@ -29,6 +29,6 @@ public abstract class Projectile : MonoBehaviour {
     public abstract void SimulateStep(float stepTime);
 
     public virtual void KillProjectile() {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

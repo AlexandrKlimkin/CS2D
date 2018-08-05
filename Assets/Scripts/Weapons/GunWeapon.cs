@@ -8,10 +8,14 @@ public class GunWeapon : Weapon {
 
     public override void Awake() {
         base.Awake();
-        projectilePrefab = Resources.Load<GunProjectile>("Projectiles/PistolProjectile");
+        projectilePrefab = Resources.Load<GunProjectile>("Prefabs/Projectiles/PistolProjectile");
     }    
 
     protected override void Shot() {
-        Instantiate(projectilePrefab, FirePoint.position, FirePoint.rotation);
+        var projectile = PistolProjectilePool.Instance.GetObject();
+        projectile.gameObject.SetActive(true);
+        projectile.transform.position = FirePoint.position;
+        projectile.transform.rotation = FirePoint.rotation;
+        projectile.SetVelocity();
     }
 }
