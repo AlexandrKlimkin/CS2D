@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class PersonController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public static List<PersonController> Persons { get; private set; }
+
+    public MovementController MovementController { get; private set; }
+    public RotationController RotationController { get; private set; }
+
+    private void Awake() {
+        MovementController = GetComponent<MovementController>();
+        RotationController = GetComponent<RotationController>();
+    }
+
+    private void Start () {
+        //Persons.Add(this);
+    }
 	
-	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		
 	}
 }
