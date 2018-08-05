@@ -9,8 +9,8 @@ public class MovementController : MonoBehaviour {
 
     public float maxSpeed;
     public float Speed;
-    public float acceleration;
-    [SerializeField] private Vector2 _direction;
+    //public float acceleration;
+    private Vector2 _direction;
 
     private void Awake() {
         PersonController = GetComponent<PersonController>();
