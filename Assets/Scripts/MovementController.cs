@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour {
 
     public PersonController PersonController { get; private set; }
+    private Rigidbody2D _rb;
 
     public float maxSpeed;
     public float Speed;
@@ -13,6 +14,7 @@ public class MovementController : MonoBehaviour {
 
     private void Awake() {
         PersonController = GetComponent<PersonController>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start() {
@@ -31,7 +33,7 @@ public class MovementController : MonoBehaviour {
         }
         _direction.Normalize();
         var delta = _direction * Time.deltaTime * Speed;
-        transform.Translate(delta, Space.World);
+        _rb.MovePosition(_rb.position + delta);
     }
 
     public void SetDirection(Vector2 newDirection) {
