@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
 
-public class PlayerControl : MonoBehaviour {
+public class PlayerControl : PunBehaviour {
 
     public PersonController player;
     private MovementController _playerMovementController;
@@ -16,6 +17,8 @@ public class PlayerControl : MonoBehaviour {
 	}
 	
 	void Update () {
+        if (!photonView.isMine && PhotonNetwork.connected)
+            return;
         MovementControl();
         RotationControl();
         WeaponControl();

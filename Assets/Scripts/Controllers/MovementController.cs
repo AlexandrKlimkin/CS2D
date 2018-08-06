@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
 
-public class MovementController : MonoBehaviour {
+public class MovementController : PunBehaviour {
 
     public PersonController PersonController { get; private set; }
     private Rigidbody2D _rb;
@@ -22,6 +23,8 @@ public class MovementController : MonoBehaviour {
     }
 
     private void Update() {
+        if (!photonView.isMine && PhotonNetwork.connected)
+            return;
         Move();
     }
 

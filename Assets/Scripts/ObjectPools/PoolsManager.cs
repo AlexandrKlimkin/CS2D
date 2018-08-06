@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolsManager : MonoBehaviour {
+public class PoolsManager : SingletonBehaviour<PoolsManager> {
 
 	void Start () {
 		

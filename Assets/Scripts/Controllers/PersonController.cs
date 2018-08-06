@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
 
-public class PersonController : MonoBehaviour {
+public class PersonController : PunBehaviour {
+
+    public static GameObject localPlayerInstance;
 
     public static List<PersonController> Persons { get; private set; }
 
@@ -14,6 +17,10 @@ public class PersonController : MonoBehaviour {
         MovementController = GetComponent<MovementController>();
         RotationController = GetComponent<RotationController>();
         WeaponController = GetComponentInChildren<WeaponController>();
+        if (photonView.isMine) {
+            localPlayerInstance = gameObject;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start () {

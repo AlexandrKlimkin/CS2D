@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ObjectPool<T> : SingletonBehaviour<ObjectPool<T>> where T: MonoBehaviour {
+public class ObjectPool<T, M> : SingletonBehaviour<M> where T: MonoBehaviour where M : MonoBehaviour {
 
     [SerializeField] private T _poolObjectPrefab;
     private List<T> _pool = new List<T>();

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
 
-public class RotationController : MonoBehaviour {
+public class RotationController : PunBehaviour {
 
     public PersonController PersonController { get; private set; }
 
@@ -18,6 +19,8 @@ public class RotationController : MonoBehaviour {
 	}
 
 	void Update () {
+        if (!photonView.isMine && PhotonNetwork.connected)
+            return;
         Rotate();
 	}
 
