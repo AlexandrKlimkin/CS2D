@@ -19,8 +19,6 @@ public class RotationController : PunBehaviour {
 	}
 
 	void Update () {
-        if (!photonView.isMine && PhotonNetwork.connected)
-            return;
         Rotate();
 	}
 

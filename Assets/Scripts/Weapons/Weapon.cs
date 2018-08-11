@@ -6,13 +6,16 @@ public abstract class Weapon : MonoBehaviour {
 
     public WeaponController Controller { get; private set; }
     public Transform FirePoint { get; private set; }
+    public PhotonView PhotonView { get; private set; }
 
+    public float damage = 5f;
     public float reloadingTime = 0.5f;
     private float _lastShotTime = 0;
     private bool IsActive { get { return gameObject.activeSelf && this.enabled; } }
 
     public virtual void Awake() {
         Controller = GetComponentInParent<WeaponController>();
+        PhotonView = GetComponent<PhotonView>();
         FirePoint = transform.Find("FirePoint");
     }
 
@@ -31,5 +34,6 @@ public abstract class Weapon : MonoBehaviour {
         return false;
     }
 
+    [PunRPC]
     protected abstract void Shot(); 
 }

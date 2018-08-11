@@ -21,4 +21,14 @@ public class GunProjectile : Projectile {
     public override void SimulateStep(float stepTime) {
         transform.position += _velocity * stepTime;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        KillProjectile();
+        if(collision.gameObject.layer == 8) {
+            var person = collision.gameObject.GetComponent<PersonController>();
+            if(person != null) {
+                person.ApplyDamage(Damage);
+            }
+        }
+    }
 }

@@ -48,10 +48,8 @@ public class MyLauncher : PunBehaviour {
     }
 
     public override void OnJoinedRoom() {
-        if(PhotonNetwork.room.PlayerCount == 1) {
-            Debug.Log("LOADING ROOM FOR 1...");
-            PhotonNetwork.LoadLevel("Room for 1");
-        }
+        Debug.Log("LOADING ROOM...");
+        PhotonNetwork.LoadLevel("Room");
         Debug.Log("ROOM JOINED");
     }
 

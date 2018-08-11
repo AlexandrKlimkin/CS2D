@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour {
 
+    public Damage Damage { get; set; }
+
     public float speed = 10f;
     public float lifeTime = 2f;
     protected float _birthTime;

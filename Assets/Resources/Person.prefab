@@ -74,9 +74,9 @@ GameObject:
   - component: {fileID: 50213113797842876}
   - component: {fileID: 58647149798812924}
   - component: {fileID: 114271928164098644}
-  - component: {fileID: 114374361458392546}
   - component: {fileID: 114358784930780110}
-  m_Layer: 0
+  - component: {fileID: 114489029404908444}
+  m_Layer: 8
   m_Name: Person
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4348016727111310}
   - component: {fileID: 114322690393210442}
+  - component: {fileID: 114775469940204406}
   m_Layer: 0
   m_Name: TommyGun
   m_TagString: Untagged
@@ -171,6 +172,7 @@ GameObject:
   - component: {fileID: 4616404351887382}
   - component: {fileID: 212374987146754964}
   - component: {fileID: 114757354474681202}
+  - component: {fileID: 114115178940741958}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -204,6 +206,7 @@ GameObject:
   - component: {fileID: 4730359849049022}
   - component: {fileID: 212371652375143866}
   - component: {fileID: 114462480626355414}
+  - component: {fileID: 114702844072061938}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -453,6 +456,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21331fe75cec424d9db4583cb67da91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114115178940741958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901286791813486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114757354474681202}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114271928164098644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,7 +502,8 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114374361458392546}
+  - {fileID: 114489029404908444}
+  - {fileID: 114462480626355414}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -490,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a7c13caa25144e864725aac9be634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   reloadingTime: 0.1
   projectilePrefab: {fileID: 0}
 --- !u!114 &114358784930780110
@@ -504,71 +535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114961648811462508}
---- !u!114 &114374361458392546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199151046968944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 4
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 10
-    InterpolateMoveTowardsAcceleration: 2
-    InterpolateMoveTowardsDeceleration: 2
-    InterpolateSpeedCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: -1
-        value: 0
-        inSlope: 0
-        outSlope: Infinity
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 4
-        value: 4
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-    DrawErrorGizmo: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &114462480626355414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,8 +546,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a7c13caa25144e864725aac9be634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   reloadingTime: 0.5
   projectilePrefab: {fileID: 0}
+--- !u!114 &114489029404908444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199151046968944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1316f6c60a57f114d8ae8f5796e17030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114669399096806448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,7 +572,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  Speed: 3
+  speed: 3
+  Direction: {x: 0, y: 0}
+--- !u!114 &114702844072061938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923725397191508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114462480626355414}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114757354474681202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,10 +611,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f8a39dca60ce04bb016920138d1b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   reloadingTime: 0.5
   projectilePrefab: {fileID: 0}
   pelletCount: 8
   pelletsAngle: 20
+--- !u!114 &114775469940204406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650582775698120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114322690393210442}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114851315262060292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,6 +666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f83270e0a981a4580ec2422316c129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 0
 --- !u!212 &212239005647946988
 SpriteRenderer:
   m_ObjectHideFlags: 1

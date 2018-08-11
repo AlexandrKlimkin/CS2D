@@ -24,16 +24,10 @@ public class GameManager : PunBehaviour {
 
     public override void OnPhotonPlayerConnected(PhotonPlayer other) {
         Debug.Log("PLAYER CONNECTED " + other.NickName);
-        if(PhotonNetwork.isMasterClient) {
-            LoadArena();
-        }
     }
 
     public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer) {
         Debug.Log("PLAYER |" + otherPlayer.NickName + "|DISCONNECTED");
-        if(PhotonNetwork.isMasterClient) {
-            LoadArena();
-        }
     }
 
     public override void OnLeftRoom() {
@@ -43,15 +37,4 @@ public class GameManager : PunBehaviour {
     public void LeaveRoom() {
         PhotonNetwork.LeaveRoom();
     }
-
-    private void LoadArena() {
-        if(!PhotonNetwork.isMasterClient) {
-            Debug.LogError("TRYING TO LOAD LEVEL FROM NON MASTERCLIENT");
-        }
-        Debug.Log("LOADING LEVEL: " + PhotonNetwork.room.PlayerCount);
-        PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.room.PlayerCount);
-
-    }
-
-
 }
